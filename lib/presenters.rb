@@ -1,4 +1,4 @@
-require 'delegator'
+require 'delegate'
 
 require 'presenters/version'
 require 'presenters/controller'
