@@ -1,6 +1,7 @@
 require 'delegate'
 
 require 'presenters/version'
+require 'presenters/support'
 require 'presenters/controller'
 require 'presenters/base'
 require 'presenters/railtie'
