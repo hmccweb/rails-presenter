@@ -74,5 +74,13 @@ module Presenters
     rescue NameError
       ApplicationPresenter
     end
+
+    def self.choose_presenter(original_presenter, override = nil)
+      if override
+        parse_override(override)
+      else
+        original_presenter
+      end
+    end
   end
 end

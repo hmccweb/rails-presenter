@@ -53,4 +53,16 @@ class PresentersSupportTest < ActiveSupport::TestCase
     assert_equal BirthdayPresenter,
       Presenters::Support.find_presenter(Gift.new, 'birthday')
   end
+
+
+  test "choose_presenter" do
+    assert_equal BirthdayPresenter,
+      Presenters::Support.choose_presenter(BirthdayPresenter)
+
+    assert_equal BirthdayPresenter,
+      Presenters::Support.choose_presenter(Admin::GiftPresenter, BirthdayPresenter)
+
+    assert_equal BirthdayPresenter,
+      Presenters::Support.choose_presenter(Admin::GiftPresenter, 'birthday')
+  end
 end
