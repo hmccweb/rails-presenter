@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Cookie Monster
+  birth_date: 2014-09-22 19:28:01
+
+two:
+  name: Big Bird
+  birth_date: 2014-09-22 19:28:01
