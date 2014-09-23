@@ -42,4 +42,15 @@ class PresentersSupportTest < ActiveSupport::TestCase
     assert_equal Admin::GiftPresenter,
       Presenters::Support.parse_override('admin/gift')
   end
+
+  test "find_presenter" do
+    assert_equal BirthdayPresenter,
+      Presenters::Support.find_presenter(Birthday.new)
+
+    assert_equal BirthdayPresenter,
+      Presenters::Support.find_presenter(Gift.new, BirthdayPresenter)
+
+    assert_equal BirthdayPresenter,
+      Presenters::Support.find_presenter(Gift.new, 'birthday')
+  end
 end
