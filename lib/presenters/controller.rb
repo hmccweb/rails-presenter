@@ -17,7 +17,7 @@ module Presenters
     #
     # Returns an instance of the presenter.
     def present(model, model_override = nil)
-      presenter = ApplicationPresenter.find_presenter(model, model_override)
+      presenter = Support.choose_presenter(model, model_override)
 
       presenter.new(model)
     end
