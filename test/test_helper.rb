@@ -17,3 +17,16 @@ load "#{Rails.root}/db/schema.rb"
 if ActiveSupport::TestCase.method_defined?(:fixture_path=)
   ActiveSupport::TestCase.fixture_path = File.expand_path("../fixtures", __FILE__)
 end
+
+class GeneratorTestHelper < Rails::Generators::TestCase
+  destination File.expand_path("../../tmp", __FILE__)
+
+  setup :prepare_destination
+  teardown :cleanup_destination
+
+  private
+
+  def cleanup_destination
+    rm_rf(destination_root)
+  end
+end
