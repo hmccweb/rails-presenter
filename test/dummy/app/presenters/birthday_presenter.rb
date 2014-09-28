@@ -1,2 +1,2 @@
-class BirthdayPresenter < Presenters::Base
+class BirthdayPresenter < ApplicationPresenter
 end

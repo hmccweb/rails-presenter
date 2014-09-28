@@ -1,2 +1,2 @@
-class WrappingPaperPresenter < Presenters::Base
+class WrappingPaperPresenter < ApplicationPresenter
 end
