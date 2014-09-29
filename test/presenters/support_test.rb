@@ -1,68 +1,88 @@
 require 'test_helper'
 
 class PresentersSupportTest < ActiveSupport::TestCase
-  test "get_presenter_from_string automatically appends 'Presenter'" do
+  test "string_to_presenter automatically appends 'Presenter'" do
     assert_equal ApplicationPresenter,
-      Presenters::Support.get_presenter_from_string('application')
+      Presenters::Support.string_to_presenter('application')
 
     assert_equal WrappingPaperPresenter,
-      Presenters::Support.get_presenter_from_string('wrapping_paper')
+      Presenters::Support.string_to_presenter('wrapping_paper')
   end
 
-  test "get_presenter_from_string doesn't always re-append 'Presenter'" do
+  test "string_to_presenter doesn't always re-append 'Presenter'" do
     assert_equal ApplicationPresenter,
-      Presenters::Support.get_presenter_from_string('application_presenter')
+      Presenters::Support.string_to_presenter('application_presenter')
   end
 
-  test "get_presenter_from_string works with namespaces" do
+  test "string_to_presenter works with namespaces" do
     assert_equal Admin::GiftPresenter,
-      Presenters::Support.get_presenter_from_string('admin/gift')
+      Presenters::Support.string_to_presenter('admin/gift')
   end
 
-  test "get_presenter_from_string works with if string is constantized" do
+  test "string_to_presenter works with if string is constantized" do
     assert_equal Admin::GiftPresenter,
-      Presenters::Support.get_presenter_from_string('Admin::Gift')
+      Presenters::Support.string_to_presenter('Admin::Gift')
 
     assert_equal Admin::GiftPresenter,
-      Presenters::Support.get_presenter_from_string('Admin::GiftPresenter')
+      Presenters::Support.string_to_presenter('Admin::GiftPresenter')
   end
 
-  test "get_presenter_from_string throws errors if presenter is not found" do
+  test "string_to_presenter throws errors if presenter is not found" do
     assert_raises NameError do
-      Presenters::Support.get_presenter_from_string('this_does_not_exist')
+      Presenters::Support.string_to_presenter('this_does_not_exist')
     end
   end
 
-  test "parse_override returns the constant it was passed in" do
-    assert_equal Admin::GiftPresenter,
-      Presenters::Support.parse_override(Admin::GiftPresenter)
+  test "override_to_class_name returns the constant it was passed in" do
+    assert_equal 'Admin::GiftPresenter',
+      Presenters::Support.override_to_class_name(Admin::GiftPresenter)
   end
 
-  test "parse_override returns the constantized string" do
-    assert_equal Admin::GiftPresenter,
-      Presenters::Support.parse_override('admin/gift')
+  test "override_to_class_name returns the constantized string" do
+    assert_equal 'Admin::Gift',
+      Presenters::Support.override_to_class_name('admin/gift')
   end
 
-  test "find_presenter" do
-    assert_equal BirthdayPresenter,
-      Presenters::Support.find_presenter(Birthday.new)
+  # test "find_presenter" do
+  #   assert_equal BirthdayPresenter,
+  #     Presenters::Support.find_presenter(Birthday.new)
 
-    assert_equal BirthdayPresenter,
-      Presenters::Support.find_presenter(Gift.new, BirthdayPresenter)
+  #   assert_equal BirthdayPresenter,
+  #     Presenters::Support.find_presenter(Gift.new, BirthdayPresenter)
 
-    assert_equal BirthdayPresenter,
-      Presenters::Support.find_presenter(Gift.new, 'birthday')
+  #   assert_equal BirthdayPresenter,
+  #     Presenters::Support.find_presenter(Gift.new, 'birthday')
+  # end
+
+  # test "choose_presenter" do
+  #   assert_equal BirthdayPresenter,
+  #     Presenters::Support.choose_presenter(BirthdayPresenter)
+
+  #   assert_equal BirthdayPresenter,
+  #     Presenters::Support.choose_presenter(Admin::GiftPresenter, BirthdayPresenter)
+
+  #   assert_equal BirthdayPresenter,
+  #     Presenters::Support.choose_presenter(Admin::GiftPresenter, 'birthday')
+  # end
+
+  test "instance_to_class_name model" do
+    gift = Gift.new
+    class_name = Presenters::Support.instance_to_class_name(gift)
+
+    assert_equal "Gift", class_name
   end
 
+  test "instance_to_class_name relation" do
+    gift = Gift.all
+    class_name = Presenters::Support.instance_to_class_name(gift)
 
-  test "choose_presenter" do
-    assert_equal BirthdayPresenter,
-      Presenters::Support.choose_presenter(BirthdayPresenter)
+    assert_equal "Gift", class_name
+  end
 
-    assert_equal BirthdayPresenter,
-      Presenters::Support.choose_presenter(Admin::GiftPresenter, BirthdayPresenter)
+  test "instance_to_class_name array" do
+    gift = [Gift.new]
+    class_name = Presenters::Support.instance_to_class_name(gift)
 
-    assert_equal BirthdayPresenter,
-      Presenters::Support.choose_presenter(Admin::GiftPresenter, 'birthday')
+    assert_equal "Gift", class_name
   end
 end

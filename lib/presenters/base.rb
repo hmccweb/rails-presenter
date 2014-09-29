@@ -9,7 +9,7 @@ module Presenters
     #
     # Yields the presenter-ified value of the iteration
     def each(presenter_name = nil, &block)
-      presenter = Support.choose_presenter(self.class, presenter_name)
+      presenter = Support.present!(model, presenter_name)
 
       model.each do |m|
         block.call(presenter.new(m))
