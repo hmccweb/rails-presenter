@@ -1,4 +1,4 @@
-# Presenters
+# Presenter
 
 Lightweight presenter layer for Rails 4.
 
@@ -7,14 +7,14 @@ Lightweight presenter layer for Rails 4.
 Add into your `Gemfile`
 
 ```ruby
-gem 'presenters', git: 'https://github.com/hmccweb/rails-presenters.git'
+gem 'presenter', git: 'https://github.com/hmccweb/rails-presenters.git'
 ```
 
 Run in terminal
 
 ```bash
 bundle install                         # downloads and installs gem from github
-bundle exec rails g presenters:install # installs application_presenter.rb
+bundle exec rails g presenter:install # installs application_presenter.rb
 ```
 
 ## Testing

@@ -1,8 +1,8 @@
 require 'test_helper'
-require "generators/presenters/install_generator"
+require "generators/presenter/install_generator"
 
 class InstallerGeneratorTest < GeneratorTestHelper
-  tests Presenters::InstallGenerator
+  tests Presenter::InstallGenerator
 
   test "application presenter installation" do
     run_generator

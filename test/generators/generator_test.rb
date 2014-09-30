@@ -1,8 +1,8 @@
 require 'test_helper'
-require "generators/presenters/presenters_generator"
+require "generators/presenter/presenters_generator"
 
-class PresentersGeneratorTest < GeneratorTestHelper
-  tests Presenters::PresentersGenerator
+class PresenterGeneratorTest < GeneratorTestHelper
+  tests Presenter::PresenterGenerator
 
   test "application presenter generation from template" do
     run_generator %w(PowerPoint)

@@ -1,4 +1,4 @@
-module Presenters
+module Presenter
   module Support
     # Private: Parses a string to get the presenter
     #

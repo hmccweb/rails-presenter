@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class PresentersBaseTest < ActiveSupport::TestCase
+class PresenterBaseTest < ActiveSupport::TestCase
   test "presence of #each method" do
-    assert Presenters::Base.instance_methods.include? :each
+    assert Presenter::Base.instance_methods.include? :each
   end
 
   test "#each yields same presenter as itself by default" do

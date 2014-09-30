@@ -1,2 +1,2 @@
-class Admin::GiftPresenter < Presenters::Base
+class Admin::GiftPresenter < ApplicationPresenter
 end

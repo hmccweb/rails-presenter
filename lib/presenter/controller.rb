@@ -1,4 +1,4 @@
-module Presenters
+module Presenter
   module Controller
     # Public: Finds the appropriate presenter
     #

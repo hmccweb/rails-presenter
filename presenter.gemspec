@@ -1,17 +1,17 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
-require "presenters/version"
+require "presenter/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "presenters"
-  s.version     = Presenters::VERSION
+  s.name        = "presenter"
+  s.version     = Presenter::VERSION
   s.authors     = ["TODO: Your name"]
   s.email       = ["TODO: Your email"]
   s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Presenters."
-  s.description = "TODO: Description of Presenters."
+  s.summary     = "TODO: Summary of Presenter."
+  s.description = "TODO: Description of Presenter."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]

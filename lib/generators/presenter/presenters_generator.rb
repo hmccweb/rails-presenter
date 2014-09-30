@@ -1,5 +1,5 @@
-module Presenters
-  class PresentersGenerator < Rails::Generators::NamedBase
+module Presenter
+  class PresenterGenerator < Rails::Generators::NamedBase
     namespace "presenter"
     source_root File.expand_path("../templates", __FILE__)
 

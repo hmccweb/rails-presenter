@@ -1,4 +1,4 @@
-module Presenters
+module Presenter
   class Base < SimpleDelegator
     # Public: Runs the given block once for each item in the array/relation,
     # wrapping each item with an instance of the specified presenter.
